@@ -1,7 +1,7 @@
 # Ticketing
 
-```diff 
-Developed with +kotlin 
+
+Developed with kotlin 
 
 
 This sample is to show how to add, delete and view tickets using kotlin.
