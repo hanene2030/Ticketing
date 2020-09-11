@@ -1,35 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bgColor"
     tools:context=".TicketDetailsActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#00FFFFFF"
-         app:title="Ticket"
-
+        android:background="@color/bgColor"
+        app:title="Ticket"
+        android:theme="@style/titleStyle"
         app:titleTextColor="@color/cardview_dark_background" />
-     <EditText
-         android:id="@+id/title"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         style="@style/titleStyle"
-         android:layout_below="@+id/toolbar"
-         android:hint="Ticket title"
-         android:paddingTop="50dp"
-         />
+
+
+    <EditText
+        android:id="@+id/title"
+        style="@style/titleStyle.mini"
+        android:layout_margin="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:hint="Ticket title"
+        android:backgroundTint="@color/textColor"
+        android:paddingTop="50dp" />
+
     <EditText
         android:id="@+id/text"
+        android:layout_margin="25dp"
+        android:gravity="start"
+        android:backgroundTint="@color/textColor"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/title"
-        android:hint="Ticket description "
-        />
+        style="@style/detailsStyle"
+        android:hint="Ticket description " />
+
+
 
 </RelativeLayout>

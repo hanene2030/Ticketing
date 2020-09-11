@@ -1,16 +1,28 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
     </style>
+
 
     <style name="titleStyle">
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">25sp</item>
-        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">28sp</item>
+        <item name="fontFamily">@font/crete_round</item>
+        <item name="color">@color/titleColor</item>
+    </style>
+    <style name="titleStyle.mini">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">22sp</item>
+        <item name="fontFamily">@font/roboto</item>
+        <item name="color">@color/textColor</item>
+    </style>
+    <style name="detailsStyle">
+        <item name="android:textSize">20sp</item>
+        <item name="fontFamily">@font/roboto</item>
+        <item name="color">@color/detailsColor</item>
     </style>
 </resources>

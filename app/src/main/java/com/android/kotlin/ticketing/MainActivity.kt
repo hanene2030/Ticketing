@@ -9,16 +9,20 @@ import android.os.Parcelable
 import android.util.Log
 import android.view.View
 import androidx.appcompat.widget.Toolbar
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.kotlin.ticketing.utils.loadTickets
 import com.android.kotlin.ticketing.utils.persistDeleteTicket
 import com.android.kotlin.ticketing.utils.persistTicket
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var tickets : MutableList<Ticket>
     lateinit var adapter: TicketAdapter
+    lateinit var coordinatorLayout :CoordinatorLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -38,6 +42,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val recyclerView = findViewById(R.id.tickets_recycle_view) as RecyclerView
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
+
+        coordinatorLayout = findViewById(R.id.coordinator_layout) as CoordinatorLayout
 
     }
 
@@ -64,6 +70,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         intent.putExtra(TicketDetailsActivity.EXTRA_TICKET  ,ticket as Parcelable)
         intent.putExtra(TicketDetailsActivity.EXTRA_TICKET_INDEX,ticketIndex)
         startActivityForResult(intent, TicketDetailsActivity.REQUEST_EDIT_TICKET)
+        overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
+
     }
 
     @SuppressLint("MissingSuperCall")
@@ -75,7 +83,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         when(requestCode){
             TicketDetailsActivity.REQUEST_EDIT_TICKET -> {
 
-                println("=====================================")
                 proceedSaveTicketResult(data)
 
 
@@ -119,6 +126,7 @@ private fun saveTicket(ticketIndex: Int,ticket:Ticket){
         persistDeleteTicket(this, ticket);
 
         adapter.notifyDataSetChanged()
+        Snackbar.make(coordinatorLayout,"${ticket.title} deleted!",Snackbar.LENGTH_SHORT)
 
     }
 

@@ -1,18 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:id="@+id/coordinator_layout"
+    tools:context=".MainActivity"
+    android:background="@color/bgColor"
+    >
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="#00FFFFFF"
-        app:title="My tickets"
-        app:titleTextColor="@color/cardview_dark_background" />
+        android:layout_height="match_parent"
+    >
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/bgColor"
+            android:theme="@style/titleStyle"
+
+            app:title="My tickets"
+            app:titleTextColor="@color/cardview_dark_background" />
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -21,16 +31,19 @@
     android:layout_height="match_parent"
         android:layout_below="@+id/toolbar"
     tools:listitem="@layout/item_ticket"
+        android:background="@color/bgColor"
+        android:layout_margin="16dp"
     >
 
 </androidx.recyclerview.widget.RecyclerView>
 
+
+</RelativeLayout>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/create_ticket"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
+     android:layout_gravity="bottom|right"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
@@ -38,7 +51,9 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
         android:background="#ddd"
-        android:elevation="6dp"
+        android:elevation="3dp"
         android:src="@drawable/ic_action_add"
-        app:backgroundTint="#121111" />
-</RelativeLayout>
+        app:layout_anchor="@id/tickets_recycle_view"
+        app:layout_anchorGravity="bottom|right"
+        app:backgroundTint="@color/btnColor" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
